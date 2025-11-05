@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .resultado {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+
+        .resaltado {
+            background-color: yellow !important;
+        }
+
+        img.resaltado {
+            outline: 3px solid orange;
+            outline-offset: 3px;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+
+    <!-- If-Else -->
+    <div class="container mt-4 p-4 bg-white rounded shadow-sm border">
+        <p class="mt-3 h2">Ejemplo de If-Else</p>
+        <!-- Text Field -->
+        <div class="form-group mt-2 py-1">
+            <label for="numberInput">Ingrese un numero</label>
+            <input class="pt-1" type="number" class="form-control" id="numberInput">
+        </div>
+
+        <!-- Botón -->
+        <button id="checkNumButton" class="btn btn-primary btn-block">Par o Impar</button>
+
+        <!-- Respuesta -->
+        <div id="resultNum" class="mt-4 p-1 mt-3 p-3 border rounded bg-light"></div>
+    </div>
+
+    <!-- Switch -->
+    <div class="container mt-4 p-4 bg-white rounded shadow-sm border">
+        <p class="mt-3 h2">Ejemplo de Switch</p>
+        <!-- Text Field -->
+        <div class="form-group mt-2 py-1">
+            <label for="numberInput">Ingrese un numero (1-7)</label>
+            <input class="pt-1" type="number" class="form-control" id="dayInput" min="1" max="7">
+        </div>
+
+        <!-- Botón -->
+        <button id="checkDayBtn" class="btn btn-primary btn-block">Dia de la Semana</button>
+
+        <!-- Respuesta -->
+        <div id="resultDia" class="mt-3 p-3 border rounded bg-light"></div>
+    </div>
+
+    <!-- Try Catch -->
+    <div class="container mt-4 p-4 bg-white rounded shadow-sm border">
+        <p class="mt-3 h2">Ejemplo de Try Catch</p>
+        <!-- Text Field -->
+        <div class="form-group mt-2 py-1">
+            <label for="numInput">Ingrese un número (1–10):</label>
+            <input class="pt-1" type="text" class="form-control" id="numInput">
+        </div>
+
+        <button id="checkTryBtn" class="btn btn-primary btn-block">Verificar Número</button>
+
+        <div id="resultTry" class="mt-3 p-3 border rounded bg-light"></div>
+    </div>
+
+    <!-- Ciclos -->
+    <div class="container mt-4 p-4 bg-white rounded shadow-sm border">
+        <p class="mt-3 h2">Ejemplo de Ciclos</p>
+        <p class="text-muted">Haz clic en los botones para ver cómo funciona cada tipo de bucle. (Hasta que i >= 5)</p>
+
+        <div class="mb-3">
+            <button id="forBtn" class="btn btn-primary me-2">Ejecutar For (i + 1)</button>
+            <button id="whileBtn" class="btn btn-success me-2">Ejecutar While (i + 2)</button>
+            <button id="doWhileBtn" class="btn btn-warning">Ejecutar Do While (i = 6)</button>
+        </div>
+
+        <div id="resultadoCiclo" class="mt-3 p-3 border rounded bg-light"></div>
+    </div>
+
+    <!-- Funciones -->
+    <div class="container mt-4 p-4 bg-white rounded shadow-sm border">
+        <p class="mt-3 h2">Ejemplo de Funciones (Definir y Llamar)</p>
+        <p class="text-muted">Ingrese un caracter, el código verá si es un número, una letra o ninguno de los dos.</p>
+        <div class="form-group mt-2 py-1">
+            <label for="numInput">Ingrese un Caracter:</label>
+            <input class="pt-1" type="text" class="form-control" id="funcionInput" maxlength="1">
+        </div>
+        <button id="funcionBtn" class="btn btn-primary btn-block" onclick="comparaCaracter()">Analizar</button>
+        <div id="resultadoFuncion" class="mt-3 p-3 border rounded bg-light"></div>
+    </div>
+
+    <!-- Expresiones y operadores -->
+    <div class="container mt-4 p-4 bg-white rounded shadow-sm border">
+        <p class="mt-3 h2">Ejemplo de Expresiones y operadores</p>
+        <p class="text-muted">Según el botón, se llevarán a cabo tareas distintas con los valores dados.</p>
+        <div class="form-group mt-2 py-1">
+            <label for="numInput">Ingrese un Número:</label>
+            <div class="row align-items-center">
+                <div class="col-12 col-md-3">
+                    <input type="number" class="form-control pt-1" id="num1" max="100" placeholder="Número 1">
+                </div>
+                <div class="col-12 col-md-3">
+                    <input type="number" class="form-control pt-1" id="num2" max="100" placeholder="Número 2">
+                </div>
+            </div>
+
+        </div>
+        <div class="mb-3">
+            <button id="comparacionBtn" onclick="compararNumeros()" class="btn btn-primary me-2">Comparación</button>
+            <button id="aritmeticBtn" onclick="sumarNumeros()" class="btn btn-success me-2">Aritmética (Suma)</button>
+            <button id="logicBtn" onclick="restarCondicional()" class="btn btn-warning">Operadores lógicos</button>
+        </div>
+        <div id="resultadoOperacion" class="mt-3 p-3 border rounded bg-light"></div>
+    </div>
+
+    <!-- Números y Fechas -->
+    <div id="num-fech" class="container mt-4 p-4 bg-white rounded shadow-sm border">
+        <h2 class="text-center mb-4">Ejemplo Números y Fechas</h2>
+
+        <div class="row text-center">
+            <!-- Columna 1: Number -->
+            <div class="col-md-4 border-right">
+                <h4>Objeto Number</h4>
+                <p>Introduce un número para redondear:</p>
+                <input type="number" id="numeroInput" class="form-control mb-2" placeholder="Ejemplo: 12.345">
+                <button class="btn btn-primary btn-block" id="roundBtn">Redondear</button>
+                <p class="mt-3">Número redondeado: <strong><span id="roundNumber"></span></strong></p>
+            </div>
+
+            <!-- Columna 2: Math -->
+            <div class="col-md-4 border-right">
+                <h4>Objeto Math</h4>
+                <p>Potencia:</p>
+                <input type="number" id="base" class="form-control mb-2" placeholder="Base">
+                <input type="number" id="exponente" class="form-control mb-2" placeholder="Exponente">
+                <button class="btn btn-success btn-block" id="powerBtn">Calcular Potencia</button>
+                <p class="mt-2">Resultado: <strong><span id="powerNumber"></span></strong></p>
+            </div>
+
+            <!-- Columna 3: Date -->
+            <div class="col-md-4">
+                <h4>Objeto Date</h4>
+                <p>Haz clic para mostrar la fecha y hora actuales:</p>
+                <button class="btn btn-warning btn-block" id="dateBtn">Mostrar Fecha y Hora</button>
+                <p class="mt-3">Fecha y hora: <strong><span id="currentDate"></span></strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formateo de texto -->
+    <div class="container mt-4 p-4 bg-white rounded shadow-sm border ">
+        <h2 class="text-center mb-4">Ejemplo Formateo de Texto</h2>
+        <div class="d-flex justify-content-center align-items-center">
+            <p class="pe-2">Introduce texto: </p>
+            <input type="text" id="texto" class="form-control mb-2 w-25">
+        </div>
+        <button class="btn btn-success btn-block d-block mx-auto" id="mostrarBtn">Mostrar Comportamiento</button>
+
+        <div class="row text-center mt-4">
+            <!-- Columna 1: Cadena Literal -->
+            <div class="col-md-6 border-right">
+                <h4>Cadena Literal</h4>
+                <p><strong>Texto:</strong> <span id="literalText"></span></p>
+                <p><strong>Tipo:</strong> <span id="literalType"></span></p>
+                <p><strong>Mayúsculas:</strong> <span id="literalMayus"></span></p>
+            </div>
+
+            <!-- Columna 2: Objeto String -->
+            <div class="col-md-6 border-right">
+                <h4>Objeto String</h4>
+                <p><strong>Texto:</strong> <span id="stringText"></span></p>
+                <p><strong>Tipo:</strong> <span id="stringType"></span></p>
+                <p><strong>Largo:</strong> <span id="stringLargo"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Colecciones indexadas -->
+    <div class="container mt-4 p-4 bg-white rounded shadow-sm border">
+        <h2 class="text-center mb-4">Arreglos Interactivos</h2>
+
+        <div class="row text-center">
+            <!-- Arreglo normal -->
+            <div class="col-md-6 border-right">
+                <h4>Arreglo normal (Cualquier Tipo)</h4>
+                <p>Escribe una palabra o texto y agrégalo:</p>
+                <input type="text" id="arrayNormalInput" class="form-control w-75 mx-auto mb-2"
+                    placeholder="Ej: Casa, Montaña, Pescado, etc.">
+                <button class="btn btn-primary mb-3" id="addNormalBtn">Agregar al Arreglo</button>
+                <p><strong>Contenido:</strong> <span id="contenidoNormal"></span></p>
+            </div>
+
+            <!-- Arreglo tipado -->
+            <div class="col-md-6">
+                <h4>Arreglo tipado (Solo un Tipo)</h4>
+                <p>Escribe un número entero y agrégalo:</p>
+                <input type="number" id="arrayTipadoInput" class="form-control w-75 mx-auto mb-2"
+                    placeholder="Ej: 5, 110, 756, 26">
+                <button class="btn btn-success mb-3" id="addTipadoBtn">Agregar al Arreglo Tipado</button>
+                <p><strong>Contenido:</strong> <span id="contenidoTipado"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- DOM -->
+    <div id="ejemplo-DOM" class="container mt-4 p-4 bg-white rounded shadow-sm border">
+        <h1 class="text-center mb-4">Ejemplo de búsqueda DOM</h1>
+
+        <!-- Controles -->
+        <div class="text-center mb-4">
+            <button class="btn btn-primary m-1" onclick="buscarPorId()">Por ID</button>
+            <button class="btn btn-warning m-1" onclick="buscarPorEtiqueta()">Por Etiqueta</button>
+            <button class="btn btn-success m-1" onclick="buscarPorClase()">Por Clase</button>
+            <button class="btn btn-info m-1" onclick="buscarPorSelector()">Por Selector CSS</button>
+            <button class="btn btn-danger m-1" onclick="buscarPorColeccion()">Por Colección de Objetos</button>
+        </div>
+        <!-- Zona de resultado -->
+        <h5>Resultado:</h5>
+        <p id="textoResultado">Hacer clic en uno de los botones para interactuar.</p>
+        <hr>
+        <!-- Contenido de ejemplo -->
+        <div class="mt-4">
+            <h2 id="tituloPrincipal">Título (ID = tituloPrincipal)</h2>
+
+            <p class="descripcion">Este es un párrafo con clase <b>descripcion</b>.</p>
+            <p class="descripcion">Otro párrafo con la misma clase.</p>
+
+            <b>Lista:</b>
+            <ul>
+                <li>Elemento de lista 1 (li)</li>
+                <li>Elemento de lista 2 (li)</li>
+                <li>Elemento de lista 3 (li)</li>
+            </ul>
+
+            <div class="card p-3 border mt-3 d-flex align-content-center">
+                <img src="imagen/avestruz.jpg" alt="Imagen de Ejemplo" class="img-fluid w-50">
+                <p class="pt-1">Imagen dentro de div con clase 'card'</p>
+            </div>
+
+            <div class="mt-3">
+                <input type="text" name="usuario" placeholder="Usuario" class="form-control mb-2">
+                <input type="password" name="clave" placeholder="Contraseña" class="form-control mb-2">
+            </div>
+        </div>
+    </div>
+
+    <!-- Código JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // CONTROL DE FLUJO Y MANEJO DE ERRORES
+        // if else
+        document.getElementById('checkNumButton').addEventListener('click', function () {
+            var number = document.getElementById('numberInput').value;
+            var resultDiv = document.getElementById('resultNum');
+
+            if (number % 2 === 0) {
+                // Par
+                resultDiv.innerHTML = `El numero ${number} es Par.`;
+            } else {
+                // Impar
+                resultDiv.innerHTML = `El numero ${number} es Impar.`;
+            }
+        });
+        // switch
+        document.getElementById('checkDayBtn').addEventListener('click', function () {
+            var numeroDia = parseInt(document.getElementById('dayInput').value);
+            var resultDiv = document.getElementById('resultDia');
+            let nombreDia;
+
+            switch (numeroDia) {
+                case 1:
+                    nombreDia = "Lunes";
+                    break;
+                case 2:
+                    nombreDia = "Martes";
+                    break;
+                case 3:
+                    nombreDia = "Miércoles";
+                    break;
+                case 4:
+                    nombreDia = "Jueves";
+                    break;
+                case 5:
+                    nombreDia = "Viernes";
+                    break;
+                case 6:
+                    nombreDia = "Sábado";
+                    break;
+                case 7:
+                    nombreDia = "Domingo";
+                    break;
+                default:
+                    nombreDia = null;
+            }
+
+            if (nombreDia) {
+                resultDiv.innerHTML = `El día es <strong>${nombreDia}</strong>.`;
+            } else {
+                resultDiv.innerHTML = 'El número no es válido';
+            }
+        });
+        // try catch / objeto error
+        document.getElementById('checkTryBtn').addEventListener('click', function () {
+            const input = document.getElementById('numInput').value;
+            const resultDiv = document.getElementById('resultTry');
+
+            try {
+                // Si el campo está vacío
+                if (input === "") throw new Error("El campo está vacío");
+
+                const num = Number(input);
+                // Si no es un número
+                if (isNaN(num)) throw new Error("Debe ingresar un número válido");
+
+                // Si el número está fuera del rango
+                if (num < 1) throw new Error("El número es demasiado bajo (mínimo 1)");
+                if (num > 10) throw new Error("El número es demasiado alto (máximo 10)");
+
+                // Si todo está bien
+                resultDiv.innerHTML = `El número <strong>${num}</strong> es válido.`;
+
+            } catch (error) {
+                // Captura los errores lanzados con throw
+                resultDiv.innerHTML = `${error}`;
+                // OBJETO ERROR
+                console.log(error.name)
+                console.log(error.stack)
+            }
+        });
+        // BUCLES E ITERACION 
+        const resultadoDiv = document.getElementById("resultadoCiclo");
+        // for
+        document.getElementById("forBtn").addEventListener("click", () => {
+            let salida = "<h5>Resultado del bucle <strong>for</strong>:</h5><ul>";
+            for (let i = 1; i <= 5; i++) {
+                salida += `<li>Número (for): ${i}</li>`;
+            }
+            salida += "</ul>";
+            resultadoDiv.innerHTML = salida;
+        });
+        // while
+        document.getElementById("whileBtn").addEventListener("click", () => {
+            let salida = "<h5>Resultado del bucle <strong>while</strong>:</h5><ul>";
+            let i = 1;
+            while (i <= 5) {
+                salida += `<li>Número (while): ${i}</li>`;
+                i++; i++;
+            }
+            salida += "</ul>";
+            resultadoDiv.innerHTML = salida;
+        });
+        // do while
+        document.getElementById("doWhileBtn").addEventListener("click", () => {
+            let salida = "<h5>Resultado del bucle <strong>do...while</strong>:</h5><ul>";
+            let i = 6;
+            do {
+                salida += `<li>Número (do while): ${i}</li>`;
+                i++;
+            } while (i <= 5);
+            salida += "</ul>";
+            resultadoDiv.innerHTML = salida;
+        });
+        // FUNCIONES
+        // definir funciones
+        function comparaCaracter() {
+            const valor = document.getElementById('funcionInput').value;
+            const resultado = document.getElementById('resultadoFuncion');
+
+            if (valor.length === 0) {
+                resultado.textContent = 'Por favor, ingrese un carácter.';
+                return;
+            }
+
+            // Expresiones regulares
+            const esLetra = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]$/; // Solo letras
+            const esNumero = /^[0-9]$/;               // Solo números
+
+            // Analizar el carácter
+            if (esLetra.test(valor)) {
+                resultado.textContent = `"${valor}" es una letra.`;
+            }
+            else if (esNumero.test(valor)) {
+                resultado.textContent = `"${valor}" es un número.`;
+            }
+            else {
+                resultado.textContent = `"${valor}" no es una letra ni un número.`;
+            }
+        }
+        // EXPRESIONES Y OPERADORES
+        function obtenerValores() {
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+
+            if (isNaN(num1) || isNaN(num2)) {
+                mostrarResultado("Por favor, ingresa ambos números.");
+                return null;
+            }
+
+            return { num1, num2 };
+        }
+        function mostrarResultado(texto) {
+            const resultado = document.getElementById("resultadoOperacion");
+            resultado.textContent = texto;
+        }
+        // asignación y comparación 
+        function compararNumeros() {
+            const { num1, num2 } = obtenerValores();
+
+            if (num1 > num2) {
+                mostrarResultado(`El primer número (${num1}) es mayor que el segundo (${num2}).`);
+            } else if (num2 > num1) {
+                mostrarResultado(`El segundo número (${num2}) es mayor que el primero (${num1}).`);
+            } else {
+                mostrarResultado(`Ambos números son iguales (${num1}).`);
+            }
+        }
+        // operadores aritméticos
+        function sumarNumeros() {
+            const { num1, num2 } = obtenerValores();
+            const suma = num1 + num2;
+            mostrarResultado(`La suma de ${num1} + ${num2} es ${suma}.`);
+        }
+        // operadores lógicos
+        function restarCondicional() {
+            const { num1, num2 } = obtenerValores();
+            if (num1 > num2 && num2 > 0) {
+                const resta = num1 - num2;
+                mostrarResultado(`Condición cumplida: ${num1} - ${num2} = ${resta}`);
+            } else {
+                mostrarResultado("La condición no se cumple (el primero debe ser mayor y el segundo mayor que 0).");
+            }
+        }
+        // NUMEROS Y FECHAS
+        // objeto Number
+        document.getElementById('roundBtn').addEventListener('click', function () {
+            const input = document.getElementById('numeroInput').value;
+            if (input === "") return alert("Por favor, ingresa un número.");
+            const num = new Number(input);
+            document.getElementById('roundNumber').innerText = num.toFixed(0);
+        });
+        // objeto Math
+        document.getElementById('powerBtn').addEventListener('click', function () {
+            const base = document.getElementById('base').value;
+            const exponent = document.getElementById('exponente').value;
+            if (base === "" || exponent === "") return alert("Ingresa base y exponente.");
+            document.getElementById('powerNumber').innerText = Math.pow(base, exponent);
+        });
+        // objeto Date
+        document.getElementById('dateBtn').addEventListener('click', function () {
+            const current = new Date(); // Fecha y Hora actual por defecto
+            document.getElementById('currentDate').innerText = current.toLocaleString();
+        });
+        // FORMATEO DE TEXTO
+        document.getElementById("mostrarBtn").addEventListener("click", function () {
+            const entrada = document.getElementById("texto").value;
+
+            // Si no hay texto, mostrar alerta
+            if (entrada.trim() === "") {
+                alert("Por favor, escribe un texto.");
+                return;
+            }
+            // cadenas literales
+            let literal = entrada; // string literal
+            document.getElementById("literalText").innerText = literal;
+            document.getElementById("literalType").innerText = typeof literal; // "string"
+            document.getElementById("literalMayus").innerText = literal.toUpperCase();
+            // objetos String
+            let objeto = new String(entrada);
+            document.getElementById("stringText").innerText = objeto.valueOf();
+            document.getElementById("stringType").innerText = typeof objeto; // "object"
+            document.getElementById("stringLargo").innerText = objeto.length;
+        });
+        // COLECCIONES INDEXADAS
+        // arreglo normal
+        let normalArr = [];
+        document.getElementById("addNormalBtn").addEventListener("click", function () {
+            const val = document.getElementById("arrayNormalInput").value;
+            if (val === "") return alert("Escribe un valor.");
+            normalArr.push(val);
+            document.getElementById("contenidoNormal").innerText = normalArr.join(", ");
+            document.getElementById("arrayNormalInput").value = "";
+        });
+        // arreglo tipado
+        let typedArr = new Int32Array(0);
+        document.getElementById("addTipadoBtn").addEventListener("click", function () {
+            const val = parseInt(document.getElementById("arrayTipadoInput").value);
+            if (isNaN(val)) return alert("Escribe un número entero válido.");
+            // Crear un nuevo Int32Array con un tamaño mayor
+            let nuevoArr = new Int32Array(typedArr.length + 1);
+            for (let i = 0; i < typedArr.length; i++) {
+                nuevoArr[i] = typedArr[i];
+            }
+            nuevoArr[typedArr.length] = val;
+            typedArr = nuevoArr;
+            document.getElementById("contenidoTipado").innerText = typedArr.join(", ");
+            document.getElementById("arrayTipadoInput").value = "";
+        });
+        // DOM
+        // Limpiar resaltado anterior
+        function limpiarResaltado() {
+            document.querySelectorAll(".resaltado").forEach(el => el.classList.remove("resaltado"));
+        }
+        // encontrar elementos HTML por ID 
+        function buscarPorId() {
+            limpiarResaltado();
+            const elemento = document.getElementById("tituloPrincipal");
+            elemento.classList.add("resaltado");
+            document.getElementById("textoResultado").innerText =
+                `Encontrado por ID: ${elemento.innerText}`;
+        }
+        // encontrar elementos HTML por nombre de etiqueta 
+        function buscarPorEtiqueta() {
+            limpiarResaltado();
+            const elementos = document.getElementsByTagName("li");
+            for (let el of elementos) el.classList.add("resaltado");
+            document.getElementById("textoResultado").innerText =
+                `Se encontraron ${elementos.length} elementos <li> dentro de una lista.`;
+        }
+        // encontrar elementos HTML por nombre de clase 
+        function buscarPorClase() {
+            limpiarResaltado();
+            const elementos = document.getElementsByClassName("descripcion");
+            for (let el of elementos) el.classList.add("resaltado");
+            document.getElementById("textoResultado").innerText =
+                `Se encontraron ${elementos.length} elementos con la clase "descripcion".`;
+        }
+        // encontrar elementos HTML mediante selectores CSS 
+        function buscarPorSelector() {
+            limpiarResaltado();
+            const elemento = document.querySelector(".card img");
+            elemento.classList.add("resaltado");
+            document.getElementById("textoResultado").innerText =
+                `Elemento encontrado por selector CSS ".card img".`;
+        }
+        // encontrar elementos HTML por colecciones de objetos HTML
+        function buscarPorColeccion() {
+            limpiarResaltado();
+            const inputs = document.getElementsByTagName("input");
+            for (let input of inputs) input.classList.add("resaltado");
+            document.getElementById("textoResultado").innerText =
+                `Se encontraron ${inputs.length} elementos <input> en el documento.`;
+        }
+    </script>
+
+</body>
+
+</html>
